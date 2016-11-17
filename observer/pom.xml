@@ -3,6 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>observer</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>1.4.2.RELEASE</version>
+        </dependency>
+    </dependencies>
 
     <parent>
         <groupId>patterns</groupId>
@@ -10,9 +20,8 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>patterns</groupId>
-    <artifactId>observer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+
+
 
     
 </project>
