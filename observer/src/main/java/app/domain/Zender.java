@@ -15,6 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Zender extends Observable {
 
     List<Observer> observers = new ArrayList<Observer>();
+    long counter;
 
     public void change(double bericht) {
         setChanged();
@@ -22,8 +23,9 @@ public class Zender extends Observable {
     }
 
     public void newInput(double random1, double random2, double random3) {
+
         if ((random1 % 2) == 0) {
-            Observer observer = new Ontvanger(random2);
+            Observer observer = new Ontvanger(random2, ++counter);
             addObserver(observer);
             observers.add(observer);
             change(random3);

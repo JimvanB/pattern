@@ -8,17 +8,19 @@ import java.util.Observer;
  */
 public class Ontvanger implements Observer {
 
+    long id;
     double value;
 
-    public Ontvanger(double value){
+    public Ontvanger(double value, long id) {
         this.value = value;
+        this.id = id;
     }
 
     public void update(Observable o, Object arg) {
-        value = value * - (Double) arg;
+        value = value * -(Double) arg;
     }
 
     public String getValue() {
-        return "My value is: " +value;
+        return "Observer id: " + id + " --> My value is: " + value;
     }
 }

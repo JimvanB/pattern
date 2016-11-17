@@ -1,7 +1,7 @@
 package app.controller;
 
-import app.component.Changer;
 import app.domain.Ontvanger;
+import app.domain.Zender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,16 +16,16 @@ import java.util.Observer;
 public class AppController {
 
     @Autowired
-    Changer changer;
+    Zender zender;
 
     @RequestMapping("/showStatus")
     @ResponseBody
     public String showStatus() {
 
         StringBuilder sb = new StringBuilder();
-        for (Observer ontvanger : changer.getZender().getObservers()) {
+        for (Observer ontvanger : zender.getObservers()) {
             sb.append(((Ontvanger) ontvanger).getValue());
-           sb.append("<br/>");
+            sb.append("<br/>");
         }
         return sb.toString();
     }
