@@ -6,6 +6,14 @@
     <artifactId>observer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+
+
+    <parent>
+        <groupId>patterns</groupId>
+        <artifactId>patterns</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -14,13 +22,34 @@
         </dependency>
     </dependencies>
 
-    <parent>
-        <groupId>patterns</groupId>
-        <artifactId>patterns</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
 
-
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.11</version>
+                <configuration>
+                    <imageName>biezenj/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>
+            ${project.artifactId}
+        </finalName>
+    </build>
 
 
     
